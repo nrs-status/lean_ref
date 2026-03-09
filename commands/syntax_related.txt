@@ -1,0 +1,33 @@
+operator declaration kinds
+```
+infix -- non-associative infix operator
+infixr -- right-associative infix operator
+infixl -- left-associative infix operator
+prefix -- prefix operator
+postfix -- postfix operator
+```
+
+infix operator example; gets assigned the internal name «term_⤴_»
+```
+infix:90 " ⤴ " => Option.getD
+```
+
+infix operator example; chosen internal name
+```
+infix:90 (name := getDOp) " ⤴ " => Option.getD
+```
+
+example notation declaration; duplicates subterms
+```
+notation (name := dup) "dup!" t:arg => (t, t)
+```
+
+example notation declaration; simply ignores its first arg
+```
+notation (name := ignore) "ignore " _ign:arg e:arg => e
+```
+
+example notation declaration
+```
+notation "[" start " ⇒ " stop "]" => fun x => x > start && x < stop
+```
