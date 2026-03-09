@@ -1,0 +1,2 @@
+cache data between decls
+https://leanprover.zulipchat.com/#narrow/channel/239415-metaprogramming-.2F-tactics/topic/Incremental.20elaboration.20of.20commands.2Fcaching/with/562705452
