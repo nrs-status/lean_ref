@@ -8,4 +8,8 @@ some decl eqns can be introspected with
   | 1 => 341
   | _ => 21
 ```
-generates test.match_1.splitter
+generates:
+```
+test.match_1
+test.match_1.splitter
+```
