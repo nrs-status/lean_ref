@@ -1,0 +1,20 @@
+pp.match
+default: true
+enable/disable 'match' notation
+
+pp.proofs
+default: false
+display proofs when true
+
+pp.deepTerms
+default: false
+display deeply nested terms
+
+pp.explicit
+display implicit arguments
+
+pp.universes
+display hidden universe parameters
+
+pp.notation
+display output using defined notations
