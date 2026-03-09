@@ -18,6 +18,7 @@ def includeTokenAux (tk : Token) (p : ParserFn) : ParserFn :=
 def includeToken (tk : Token) (p : Parser) : Parser :=
   .mk (mkAtomicInfo <| "including" ++ tk) (includeTokenAux tk p.fn)
 
+-- note: termParser will treat `Bool.true` as head of a Syntax.app and `matches` as an argument, unless `matches` is added as a token
 def matchesParser : Parser := leading_parser:leadPrec
   "if " >> includeToken "matches" termParser >> " matches" >> ppDedent matchAlts
 
