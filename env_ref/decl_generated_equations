@@ -1,3 +1,6 @@
+some decl eqns can be introspected with
+#print eqns <declname>
+
 ```
   def test (x : Nat) : Nat :=
   match x with
