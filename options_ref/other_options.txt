@@ -1,1 +1,5 @@
+disable hygiene
 set_option hygiene false
+
+disable automatically turning indices into parameters
+set_option inductive.autoPromoteIndices false
