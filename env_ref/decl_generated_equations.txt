@@ -13,3 +13,20 @@ generates:
 test.match_1
 test.match_1.splitter
 ```
+
+
+
+
+```
+inductive mytyp | a | b | c | d | e | f
+
+def mymatch : mytyp -> Nat :=
+  fun xmytyp => match xmytyp with
+  | .a => 0
+  | .c => 1
+  | _ => 2
+```
+generates:
+```
+mymatch._sparseCasesOn_1
+```
