@@ -10,3 +10,5 @@ Nat.rec.{u}
 theorem nat_rec_at_zero : @Nat.rec mot at_zero at_succ .zero = at_zero := rfl
 theorem nat_rec_at_succ : @Nat.rec mot at_zero at_succ (Nat.succ nn) = at_succ nn (@Nat.rec mot at_zero at_succ nn) := rfl
 
+theorem nat_recOn_at_zero : @Nat.recOn mot .zero at_zero at_succ = at_zero := rfl
+theorem nat_recOn_at_succ : @Nat.recOn mot (.succ nn) at_zero at_succ = at_succ nn (@Nat.recOn mot nn at_zero at_succ) := rfl
