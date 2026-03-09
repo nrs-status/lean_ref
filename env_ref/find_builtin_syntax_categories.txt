@@ -1,1 +1,9 @@
+wrt source:
 run ripgrep in src/Lean/Parser using 'registerBuiltinParserAttribute' 
+
+within lean:
+```
+#eval show IO Unit from do
+  let pcats : ParserCategories <- Lean.Parser.builtinParserCategoriesRef.get
+  dbg_trace pcats.toList |>.map Prod.fst
+```
