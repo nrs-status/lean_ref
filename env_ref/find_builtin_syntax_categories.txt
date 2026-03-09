@@ -1,0 +1,1 @@
+run ripgrep in src/Lean/Parser using 'registerBuiltinParserAttribute' 
