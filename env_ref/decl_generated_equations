@@ -1,0 +1,8 @@
+```
+  def test (x : Nat) : Nat :=
+  match x with
+  | 0 => 5
+  | 1 => 341
+  | _ => 21
+```
+generates test.match_1.splitter
