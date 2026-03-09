@@ -1,0 +1,12 @@
+--traces for grind
+
+trace.grind.eqc
+"Setting the option trace.grind.eqc to true causes grind to print a line every time two equivalence classes merge, which is handy for seeing propagation in action."
+
+trace.grind.ematch.instance
+"Enabling the option trace.grind.ematch.instance causes grind print a trace message for each theorem instance it generates, which can be helpful when determining E-matching patterns."
+
+--traces for simp
+trace.Meta.Tactic.simp.rewrite
+trace.Meta.Tactic.simp.unify
+trace.Debug.Meta.Tactic.simp
