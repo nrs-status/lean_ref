@@ -9,6 +9,10 @@ open Lean Elab Util
 
 open private expandSimpleMatch from Lean.Elab.Match
 
+/-
+expandSimpleMatch supports only match expressions of the form
+`(match $discr:term with | $y:ident => $rhs)
+-/
 def my_match_stx : CoreM Syntax := `(match Prod.mk 1 2 with | x => x.fst)
 
 def myelab : TermElabM Unit := do
