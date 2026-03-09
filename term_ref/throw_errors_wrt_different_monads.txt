@@ -1,0 +1,3 @@
+IO
+let .some pcat := pcats.find? nm | throw (.userError "no parser category with this Lean.Name")
+
