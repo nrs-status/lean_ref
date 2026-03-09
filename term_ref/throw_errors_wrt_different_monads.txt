@@ -3,3 +3,6 @@ let .some pcat := pcats.find? nm | throw (.userError "no parser category with th
 
 TermElabM
 throwError "myerrormsg"
+
+MacroM
+Macro.throwUnsupported
