@@ -13,7 +13,7 @@ def myexpr1 : Expr := .forallE `x q(Nat) q(Nat) .default
 def myexpr2 : Expr := .forallE `p q(2 + 2 = 4) q(4 = 4) .default
 
 /--
-info: (#[
+(#[
   [mdata _patWithRef: 
     ([mdata _patWithRef: Nat.succ]) 
     ([mdata _patWithRef: ?_uniq.2764])]], Nat)
