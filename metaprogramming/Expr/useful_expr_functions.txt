@@ -23,10 +23,12 @@ Lean.Meta.mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr
 interpret a function (k : (e : Expr) -> MetaM α) as a context where there is a new fvar whose term is `e` and whose type is given by the expr (type : Expr)
 withLocalDecl (name : Name) (bi : BinderInfo) (type : Expr) (k : (e : Expr) → MetaM α) : MetaM α
 
-Given an array of fvars and an expression e, add one lambda binder for each fvar x and replaces every occurrence of x in e with a bound variable corresponding to the new lambda binder
+given an array of fvars and an expression e, add one lambda binder for each fvar x and replaces every occurrence of x in e with a bound variable corresponding to the new lambda binder
 Lean.Meta.mkLambdaFVars (xs : Array Expr) (e : Expr) (usedOnly : Bool := false) (usedLetOnly : Bool := true) (etaReduce : Bool := false) (generalizeNondepLet : Bool := true) (binderInfoForMVars : BinderInfo := BinderInfo.implicit) : MetaM Expr
-
 
 functions adjacent to Lean.Meta.mkAppM and withLocalDecl:
 withLocalDecls, mkForallFVars, mkArrow
+
+given (type : Expr), interpret (k : Array Expr -> Expr -> MetaM α) as a context where we have one fvar f_i for each binder x_i in (type : Expr), and replace each x_i in the conclusion of (type : Expr) with f_i
+Lean.Meta.forallTelescope {n : Type → Type u_1} [MonadControlT MetaM n] [Monad n] {α : Type} (type : Expr) (k : Array Expr → Expr → n α) (cleanupAnnotations : Bool := false) : n α
 
