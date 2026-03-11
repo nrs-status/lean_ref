@@ -31,4 +31,4 @@ withLocalDecls, mkForallFVars, mkArrow
 
 given (type : Expr), interpret (k : Array Expr -> Expr -> MetaM α) as a context where we have one fvar f_i for each binder x_i in (type : Expr), and replace each x_i in the conclusion of (type : Expr) with f_i
 Lean.Meta.forallTelescope {n : Type → Type u_1} [MonadControlT MetaM n] [Monad n] {α : Type} (type : Expr) (k : Array Expr → Expr → n α) (cleanupAnnotations : Bool := false) : n α
-
+(variants: forallTelescopeReducing, forallBoundedTelescope, forallMetaTelescope, forallMetaTelescopeReducing, forallMetaBoundedTelescope, lambdaTelescope, lambdaTelescopeReducing, lambdaBoundedTelescope, lambdaMetaTelescope)
