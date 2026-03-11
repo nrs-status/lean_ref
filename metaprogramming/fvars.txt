@@ -1,0 +1,9 @@
+fvars are free variables; they can only be interpreted given a local context, i.e, given a metavariable's local context.
+
+useful functions:
+
+retrieve the declaration corresponding to an fvar
+Lean.FVarId.getDecl (fvarId : FVarId) : MetaM LocalDecl
+
+retrieves the declaration of an fvar using the user-facing name
+Lean.Meta.getLocalDeclFromUserName (userName : Name) : MetaM LocalDecl
