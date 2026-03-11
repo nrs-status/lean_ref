@@ -1,0 +1,29 @@
+https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#full-normalisation
+
+an Expr is normalized to a normal form using
+Lean.Meta.reduce (e : Expr) (explicitOnly skipTypes skipProofs : Bool := true) : MetaM Expr
+```
+def someNumber : Nat := (· + 2) $ 3
+
+#eval Expr.const ``someNumber []
+-- Lean.Expr.const `someNumber []
+
+#eval reduce (Expr.const ``someNumber [])
+-- Lean.Expr.lit (Lean.Literal.natVal 5)
+```
+
+
+https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#transparency
+
+Recall: an Expr is reduced to a normal form by Lean.Meta.reduce. However, any given Expr does not have a single normal form.
+Rather, it has a normal form up to a given transparency. 
+Transparency determines which constants get unfolded during normalisation, i.e, by Lean.Meta.reduce.
+
+To execute an operation with a specific transparency, use Lean.Meta.withTransparency. 
+There are also shorthands for specific transparencies, e.g. Lean.Meta.withReducible.
+
+
+https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#weak-head-normalisation
+
+In some cases normalizing to weak-head normal form is preferable to full normalisation. For this purpose the following function is used:
+Lean.Meta.whnf : Expr → MetaM Expr
