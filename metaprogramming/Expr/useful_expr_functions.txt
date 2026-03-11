@@ -19,3 +19,7 @@ Lean.Meta.isDefEq (t s : Expr) : MetaM Bool
 make an Expr whose constructor is Expr.app, inferring implicit arguments and universe levels
 Lean.Meta.mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr
 (variants: Lean.Meta.mkAppM'; Lean.Meta.mkAppOptM; Lean.Meta.mkAppOptM')
+
+omterpret a function (k : (e : Expr) -> MetaM α) as a context where there is a new fvar whose term is `e` and whose type is given by the expr (type : Expr)
+withLocalDecl (name : Name) (bi : BinderInfo) (type : Expr) (k : (e : Expr) → MetaM α) : MetaM α
+
