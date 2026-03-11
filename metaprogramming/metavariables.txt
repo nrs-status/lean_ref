@@ -14,3 +14,9 @@ n m : Nat
 is a representation of an mvar with hypotheses `n : Nat`, `m : Nat` and expected type `n + m = m + n`
 
 closing a goal corresponds to _assigning_ an mvar
+
+there are two ways to assign an mvar: normal assignment and delayed assignment
+(https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#delayed-assignments)
+
+each mvar has a depth. only mvars whose depth correspond to the current context's depth may be assigned.
+(https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#metavariable-depth)
