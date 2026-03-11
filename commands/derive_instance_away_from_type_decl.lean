@@ -1,0 +1,1 @@
+deriving instance Repr for MyTypeWithNoReprInstance
