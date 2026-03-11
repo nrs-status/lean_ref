@@ -1,2 +1,3 @@
 https://leanprover.zulipchat.com/#narrow/channel/239415-metaprogramming-.2F-tactics/topic/InfoTree.20with.20ContextInfo.20from.20liftTermElabM/with/569974008
 https://leanprover.zulipchat.com/#narrow/channel/270676-lean4/topic/.E2.9C.94.20How.20to.20elaborate.20theorems.20in.20parallel.20in.20custom.20elabora.2E.2E.2E/with/517274687
+https://leanprover.zulipchat.com/#narrow/channel/270676-lean4/topic/.E2.9C.94.20Revert.20meta-variable.20context/with/517263424
