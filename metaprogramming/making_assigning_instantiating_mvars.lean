@@ -1,4 +1,4 @@
-run_meta do
+#eval show MetaM Unit from do
   let mvar1 ← mkFreshExprMVar (mkConst `Nat)
   let e := (mkConst `Nat.succ).app mvar1
   -- e is `Nat.succ ?m.773`, `?m.773` is unassigned
