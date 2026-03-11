@@ -1,5 +1,7 @@
 fvars are free variables; they can only be interpreted given a local context, i.e, given a metavariable's local context.
 
+When "visiting" the body of a binding expression (i.e. lam, forallE, or letE), bound variables are converted into free variables using a unique identifier, and their user-facing name, type, value (for LetE), and binder annotation are stored in the LocalContext.
+
 useful functions:
 
 retrieve the declaration corresponding to an fvar
@@ -7,3 +9,7 @@ Lean.FVarId.getDecl (fvarId : FVarId) : MetaM LocalDecl
 
 retrieves the declaration of an fvar using the user-facing name
 Lean.Meta.getLocalDeclFromUserName (userName : Name) : MetaM LocalDecl
+
+create a context with a new fvar:
+Lean.Meta.withLocalDecl {n : Type → Type u_1} [MonadControlT MetaM n] [Monad n] {α : Type} (name : Name) (bi : BinderInfo) (type : Expr) (k : Expr → n α) (kind : LocalDeclKind := LocalDeclKind.default) : n α
+(variant: Lean.Meta.withLocalDecls)
