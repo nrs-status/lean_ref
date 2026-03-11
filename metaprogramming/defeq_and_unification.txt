@@ -1,0 +1,11 @@
+https://leanprover-community.github.io/lean4-metaprogramming-book/main/04_metam.html?highlight=fvar#definitional-equality
+
+If expressions t and u contain assignable metavariables, isDefEq may assign these metavariables to make t defeq to u. We also say that isDefEq unifies t and u.
+Such unification queries are sometimes written t =?= u. For instance, the unification List ?m =?= List Nat succeeds and assigns ?m := Nat. 
+The unification Nat.succ ?m =?= n + 1 succeeds and assigns ?m := n. 
+The unification ?m₁ + ?m₂ + ?m₃ =?= m + n - k fails and no metavariables are assigned (even though there is a 'partial match' between the expressions).
+
+Each metavariable has a kind (a value of type MetavarKind) whose sole purpose is to modify the behaviour of isDefEq. Possible kinds are:
+Natural: isDefEq may freely assign the metavariable. This is the default.
+Synthetic: isDefEq may assign the metavariable, but avoids doing so if possible. For example, suppose ?n is a natural metavariable and ?s is a synthetic metavariable. When faced with the unification problem ?s =?= ?n, isDefEq assigns ?n rather than ?s.
+Synthetic opaque: isDefEq never assigns the metavariable.
