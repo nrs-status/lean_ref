@@ -13,6 +13,8 @@ display deeply nested terms
 pp.explicit
 display implicit arguments
 
+set_option pp.beta true
+have the pretty printer beta-reduce terms
 pp.universes
 display hidden universe parameters
 
