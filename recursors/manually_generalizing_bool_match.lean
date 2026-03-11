@@ -1,4 +1,4 @@
--- Bool.rec requires noncomputable attribute
+-- Bool.rec requires noncomputable attribute so we use Bool.casesOn instead
 def boolCases (b : Bool)
     (ifTrue : b = true → α)
     (ifFalse : b = false → α) :
