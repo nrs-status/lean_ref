@@ -1,0 +1,3 @@
+https://leanprover.zulipchat.com/#narrow/channel/113488-general/topic/Small.20Scale.20Reflection.20for.20the.20Working.20Lean.20user/with/428401766
+fvarAliasInfo nodes are for tracking when a variable is "semantically renamed" to a different FVarId which is still morally represented by the original. This is used for example in the unused variable linter: if you have a variable h : x + 1 = 2 in context and rw or induction rewrites it to h : x = 1, then uses of the new h count as uses of the old h, and conversely if the new h is not used then we may flag the old one as unused
+
