@@ -1,0 +1,16 @@
+mvars may be seen as either
+1. goals
+2. holes
+
+each mvar has a local context consisting of
+1. an expected type
+2. a set of hypotheses
+
+the tactic state
+```
+n m : Nat
+⊢ n + m = m + n
+```
+is a representation of an mvar with hypotheses `n : Nat`, `m : Nat` and expected type `n + m = m + n`
+
+closing a goal corresponds to _assigning_ an mvar
