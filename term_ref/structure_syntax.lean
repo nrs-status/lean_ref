@@ -1,5 +1,3 @@
-{env, options := {}}
-
 for (fvar, baseId) in altLHS.fvarDecls.toArray.reverse.zip toClear.reverse do
   pushInfoLeaf <| .ofFVarAliasInfo { id := fvar.fvarId, baseId, userName := fvar.userName }
 
