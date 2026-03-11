@@ -199,5 +199,11 @@ def dimot_reduction
   (y : α) -> unimot y = dimot a y
   := ⟨fun y' => dimot a y', fun _ => rfl⟩
 
+def eq_symm_by_dimot_reduction : (x y : α) -> x = y -> y = x :=
+  fun a b eq => 
+    let dimot : (x y : α) -> Prop := fun x y => y = x
+    let reduction := dimot_reduction α dimot a
+    Eq.rec (motive := fun y _ => reduction.1 y) (.refl _) eq
+
 
 
