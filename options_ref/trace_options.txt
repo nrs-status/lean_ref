@@ -10,3 +10,7 @@ trace.grind.ematch.instance
 trace.Meta.Tactic.simp.rewrite
 trace.Meta.Tactic.simp.unify
 trace.Debug.Meta.Tactic.simp
+
+--traces for elaboration
+set_option trace.Elab.step.result true
+
