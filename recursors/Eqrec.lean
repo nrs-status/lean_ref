@@ -191,4 +191,13 @@ theorem indexed_drec
   := Eq.rec (motive := motive) refl eq
 
 
+def dimot_reduction
+  (α : Sort u)
+  (dimot : (x y : α) -> Sort v)
+  (a : α) : 
+  Σ'unimot : (y : α) -> Sort v, 
+  (y : α) -> unimot y = dimot a y
+  := ⟨fun y' => dimot a y', fun _ => rfl⟩
+
+
 
