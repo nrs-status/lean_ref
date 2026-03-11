@@ -1,0 +1,2 @@
+Elaborate stx, and make sure all pending synthetic metavariables created while elaborating stx are solved.
+Lean.Elab.Term.elabTermAndSynthesize (stx : Syntax) (expectedType? : Option Expr) : TermElabM Expr
