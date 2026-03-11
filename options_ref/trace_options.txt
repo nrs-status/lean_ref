@@ -12,5 +12,6 @@ trace.Meta.Tactic.simp.unify
 trace.Debug.Meta.Tactic.simp
 
 --traces for elaboration
-set_option trace.Elab.step.result true
+trace.Elab.step.result
+trace.Elab.postpone
 
