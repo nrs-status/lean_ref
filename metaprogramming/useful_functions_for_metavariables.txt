@@ -1,0 +1,17 @@
+create new metavariable inheriting the local ctx
+Lean.Meta.mkFreshExprMVar (type? : Option Expr) (kind := MetavarKind.natural)
+    (userName := Name.anonymous) : MetaM Expr
+
+create new mvar at given ctx
+Lean.Meta.mkFreshExprMVarAt (lctx : LocalContext) (localInsts : LocalInstances) (type : Expr) (kind : MetavarKind := MetavarKind.natural) (userName : Name := Name.anonymous) (numScopeArgs : Nat := 0) :
+MetaM Expr
+
+extract the MVarId of an mvar
+Lean.Expr.mvarId! : Lean.Expr → Lean.MVarId
+
+update the mvar context with the assignment ?mvarId := val
+Lean.MVarId.assign (mvarId : MVarId) (val : Expr) : MetaM Unit
+
+get information about a declared mvar
+Lean.MVarId.getDecl (mvarId : MVarId) : MetaM MetavarDecl
+
