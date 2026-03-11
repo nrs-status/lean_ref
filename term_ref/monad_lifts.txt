@@ -19,3 +19,23 @@ def myMetaM : MetaM Unit := do
   dbg_trace defview.value
   pure .unit
 ```
+
+example of finding a lift for Except monads having peculiar exception types. The lift will otherwise fail because PatternElabException has no corresponding MonadExcept instance, so we map it to Lean.Exception with PatternElabException.ex first 
+```
+import Lean
+import Batteries.Tactic.OpenPrivate
+import Qq
+
+open Qq
+
+open Lean Elab Term
+
+open private elabMatchAltView withElaboratedLHS elabPatterns from Lean.Elab.Match
+
+def myexpr : Expr := .forallE `x q(Nat) q(Nat) .default
+
+#eval show TermElabM Unit from do
+  let mypat <- `(Nat.succ _)
+  let xexcept <- elabPatterns #[mypat] 1 myexpr
+  let r <- ofExcept <| xexcept.mapError PatternElabException.ex
+```
