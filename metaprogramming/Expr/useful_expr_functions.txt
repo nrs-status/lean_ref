@@ -1,5 +1,11 @@
 get ctor name
 Lean.Expr.ctorName
 
-reduce an Expr to normal form
+fully reduce an Expr to normal form
 Lean.Meta.reduce (e : Expr) (explicitOnly skipTypes skipProofs : Bool := true) : MetaM Expr
+
+reduce an Expr to weak-head normal form
+Lean.Meta.whnf : Expr → MetaM Expr
+
+infer the type of an Expr
+Lean.Meta.inferType : Expr → MetaM Expr
