@@ -190,6 +190,7 @@ theorem indexed_drec
   : motive b eq
   := Eq.rec (motive := motive) refl eq
 
+----
 
 def dimot_reduction
   (α : Sort u)
@@ -199,11 +200,30 @@ def dimot_reduction
   (y : α) -> unimot y = dimot a y
   := ⟨fun y' => dimot a y', fun _ => rfl⟩
 
+def dimot_reduced_eq_rec
+  (α : Sort u)
+  (dimot : (x y : α) -> Sort v)
+  (a b : α)
+  (refl : dimot a a)
+  (eq : a = b)
+  : dimot a b := 
+  let unimot := (dimot_reduction α dimot a).1
+  Eq.rec (motive := fun y _ => unimot y) refl eq
+
+/- dimot_reduced_eq_rec is just a reformulation of Eq.ndrec -/
+def dimot_reduced_eq_rec'
+  (α : Sort u)
+  (dimot : (x y : α) -> Sort v)
+  (a b : α)
+  (refl : dimot a a)
+  (eq : a = b)
+  : dimot a b := 
+  let unimot := (dimot_reduction α dimot a).1
+  Eq.ndrec (motive := unimot) refl eq
+
 def eq_symm_by_dimot_reduction : (x y : α) -> x = y -> y = x :=
   fun a b eq => 
-    let dimot : (x y : α) -> Prop := fun x y => y = x
-    let reduction := dimot_reduction α dimot a
-    Eq.rec (motive := fun y _ => reduction.1 y) (.refl _) eq
+    dimot_reduced_eq_rec α (fun x y => y = x) a b (.refl a) eq
 
 
 
