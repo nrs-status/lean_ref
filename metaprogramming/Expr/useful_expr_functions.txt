@@ -23,3 +23,6 @@ Lean.Meta.mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr
 interpret a function (k : (e : Expr) -> MetaM α) as a context where there is a new fvar whose term is `e` and whose type is given by the expr (type : Expr)
 withLocalDecl (name : Name) (bi : BinderInfo) (type : Expr) (k : (e : Expr) → MetaM α) : MetaM α
 
+functions adjacent to Lean.Meta.mkAppM and withLocalDecl:
+withLocalDecls, mkForallFVars, mkArrow
+
