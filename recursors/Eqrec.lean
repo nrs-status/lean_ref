@@ -27,7 +27,7 @@ def pathind
   : (x y : α) -> (p : x = y) -> C x y p
   := fun _ _ p => explicit_eqrec _ _ _ (c _) _ p
 
-def pathind_computation
+def pathind_computation_rule
   (α : Sort u)
   (C : (x y : α) -> x = y -> Sort v)
   (c : (x : α) -> C x x (.refl x))
@@ -44,7 +44,7 @@ def based_pathind
   : (x : α) -> (p : a = x) -> C x p
   := fun _ p => Eq.rec c p
 
-def based_pathind_computation
+def based_pathind_computation_rule
   (α : Sort u)
   (a : α)
   (C : (x : α) -> a = x -> Sort v)
