@@ -15,3 +15,19 @@ Lean.MVarId.assign (mvarId : MVarId) (val : Expr) : MetaM Unit
 get information about a declared mvar
 Lean.MVarId.getDecl (mvarId : MVarId) : MetaM MetavarDecl
 
+get the type of a declared mvar
+Lean.MVarId.getType (mvarId : MVarId) : MetaM Expr
+
+get the current assignment of an mvar
+Lean.getExprMVarAssignment? {m : Type → Type} [Monad m] [MonadMCtx m] (mvarId : MVarId) : m (Option Expr)
+
+replace any assigned mvar ?mv in e : Expr with its assigned value
+Lean.instantiateMVars {m : Type → Type} [Monad m] [MonadMCtx m] (e : Expr) 
+ : m Expr
+
+get the local context of the current monadic state's mvar
+Lean.MonadLCtx.getLCtx : {m : Type → Type} → [self : MonadLCtx m] → m LocalContext 
+
+change the context 
+Lean.MVarId.withContext {n : Type → Type u_1} [MonadControlT MetaM n] [Monad n] {α : Type} (mvarId : MVarId) :
+n α → n α
