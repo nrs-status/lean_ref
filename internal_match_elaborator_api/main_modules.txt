@@ -1,2 +1,26 @@
 Lean.Meta.Match
 Lean.Elab.Match
+
+
+Lean.Elab.PatternVar
+/-!
+  Patterns define new local variables.
+  This module collects them and preprocesses `_` occurring in patterns.
+  Recall that an `_` may represent anonymous variables or inaccessible terms
+  that are implied by typing constraints. Thus, we represent them with fresh named holes `?x`.
+  After we elaborate the pattern, if the metavariable remains unassigned, we transform it into
+  a regular pattern variable. Otherwise, it becomes an inaccessible term.
+
+  Macros occurring in patterns are expanded before the `collectPatternVars` method is executed.
+  The following kinds of Syntax are handled by this module
+  - Constructor applications
+  - Applications of functions tagged with the `[match_pattern]` attribute
+  - Identifiers
+  - Anonymous constructors
+  - Structure instances
+  - Inaccessible terms
+  - Named patterns
+  - Tuple literals
+  - Type ascriptions
+  - Literals: num, string and char
+-/
