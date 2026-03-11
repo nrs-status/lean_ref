@@ -15,3 +15,6 @@ Lean.Meta.ppExpr(e : Expr) : MetaM Format
 
 check defeq
 Lean.Meta.isDefEq (t s : Expr) : MetaM Bool
+
+make an Expr whose constructor is Expr.app, inferring implicit arguments and universe levels
+Lean.Meta.mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr
