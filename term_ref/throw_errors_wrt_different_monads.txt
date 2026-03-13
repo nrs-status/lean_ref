@@ -6,3 +6,6 @@ throwError "myerrormsg"
 
 MacroM
 Macro.throwUnsupported
+
+TacticM
+Lean.Meta.throwTacticEx
