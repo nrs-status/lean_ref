@@ -1,0 +1,2 @@
+Lean.Elab.Tactic.closeMainGoal
+Lean.Meta.throwTacticEx
