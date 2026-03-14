@@ -13,12 +13,15 @@ deriving instance Repr for FVarIdSet
     dbg_trace repr eq.fvarId!
     let o <- getFVarsToGeneralize #[x]
     let o' <- getFVarsToGeneralize #[eq]
+    let o'' <- getFVarsToGeneralize #[eq, x]
     dbg_trace repr o
     dbg_trace repr o'
+    dbg_trace repr o''
 
 /--
 info: Lean.Name.mkNum `_uniq 978
 #[Lean.Name.mkNum `_uniq 978]
+#[]
 #[]
 -/
 
