@@ -41,4 +41,14 @@ def toeval : TermElabM Unit := do
     gen.altViews[0]!
     gen.matchType
     #[ifTrue.fvarId!, ifFalse.fvarId!]
+  let .ok x := r | throwError "error"
+  dbg_trace (<- Lean.PrettyPrinter.ppExpr x.2)
+  dbg_trace (x.1.fvarDecls.map (·.userName))
+
+#eval toeval
+/--
+fun ifTrue ifFalse h => ifTrue ⋯
+[ifTrue, ifFalse]
+-/
+
 
