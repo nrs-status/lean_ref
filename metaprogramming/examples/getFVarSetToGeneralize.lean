@@ -12,13 +12,14 @@ deriving instance Repr for FVarIdSet
   withLocalDeclDQ `x q($α) fun x =>
   withLocalDeclDQ `y q($α) fun y =>
   withLocalDeclDQ `eq q($x = $y) fun eq => do
-    let lctx <- getLCtx
-    let o <- Lean.Meta.getFVarSetToGeneralize #[eq, x, y] {}
+    let seta <- Lean.Meta.getFVarSetToGeneralize #[x] {}
+    let setb <- Lean.Meta.getFVarSetToGeneralize #[y] {}
     dbg_trace repr eq.fvarId!
-    dbg_trace repr o
+    dbg_trace repr seta
+    dbg_trace repr setb
 
 /--
-Lean.Name.mkNum `_uniq 16954
-Std.TreeSet.ofList [Lean.Name.mkNum `_uniq 16954]
+info: Lean.Name.mkNum `_uniq 1290
+Std.TreeSet.ofList [Lean.Name.mkNum `_uniq 1290]
+Std.TreeSet.ofList [Lean.Name.mkNum `_uniq 1290]
 -/
-
