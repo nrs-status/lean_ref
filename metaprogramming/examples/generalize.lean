@@ -23,12 +23,13 @@ def myview2 : TermElabM TermMatchAltView := do .pure {
 
 deriving instance Repr for Discr
 
+
 #eval show TermElabM Unit from do
   let u : Level := .param `u
   withLocalDeclDQ `α q(Sort u) fun α =>
   withLocalDeclDQ `b q(Bool) fun b =>
   withLocalDeclDQ `ifTrue q($b = true -> $α) fun ifTrue => 
-  withLocalDeclDQ `ifFalse q($b = true -> $α) fun ifFalse => do
+  withLocalDeclDQ `ifFalse q($b = false -> $α) fun ifFalse => do
     let discrs := #[Discr.mk b (.some (.atom .none "h"))]
     let r <- generalize 
       discrs
@@ -47,15 +48,15 @@ deriving instance Repr for Discr
       dbg_trace view.patterns.map Lean.Syntax.prettyPrint
 
 /--
-info: Lean.Name.mkNum `_uniq 16821
-Lean.Name.mkNum `_uniq 16822
-Lean.Name.mkNum `_uniq 16823
-#[{ expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 16821), h? := some (Lean.Syntax.atom (Lean.SourceInfo.none) "h") },
-  { expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 16822), h? := none },
-  { expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 16823), h? := none }]
-#[Lean.Name.mkNum `_uniq 16822, Lean.Name.mkNum `_uniq 16823]
+info: Lean.Name.mkNum `_uniq 7165
+Lean.Name.mkNum `_uniq 7166
+Lean.Name.mkNum `_uniq 7167
+#[{ expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 7165), h? := some (Lean.Syntax.atom (Lean.SourceInfo.none) "h") },
+  { expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 7166), h? := none },
+  { expr := Lean.Expr.fvar (Lean.Name.mkNum `_uniq 7167), h? := none }]
+#[Lean.Name.mkNum `_uniq 7166, Lean.Name.mkNum `_uniq 7167]
 true
-(a : Bool) → (a = true → α) → (a = true → α) → α
+(a : Bool) → (a = true → α) → (a = false → α) → α
 #[ Bool.true ,  ifTrue ,  ifFalse ]
 #[ Bool.false ,  ifTrue ,  ifFalse ]
 -/
