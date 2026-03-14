@@ -11,7 +11,7 @@ def myelab (discr_stx : Syntax) : TermElabM Expr := do
   -- let discr : Expr := q(Nat.succ (Nat.succ Nat.zero))
   let matcher <- Lean.Meta.Match.mkMatcher {
     matcherName := <- mkAuxDeclName `match
-    matchType := q(Nat -> Unit)
+    matchType := q(Nat -> Bool)
     discrInfos := #[{}]
     lhss := [
       <- withLocalDeclDQ `nn q(Nat) fun nn => return {
