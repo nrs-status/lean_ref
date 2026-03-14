@@ -26,5 +26,3 @@ def boolCases'' (b : Bool)
     α := match (generalizing := false) h : b, ifTrue, ifFalse with
     | .true, iftrue, _ => iftrue _
     | .false, _, iffalse => iffalse _
-
-    | .false, ift, iff => ifFalse _
