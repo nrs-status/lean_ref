@@ -53,15 +53,14 @@ def let'_elab : Do.DoElab :=
     let let_stx <- (match ty with
       | .some ty' => `(letDecl|$id : $ty' := $body)
       | .none => `(letDecl|$id := $body))
-    let id_as_nm := Lean.TSyntax.getId id
-    let nm <- mkFreshUserName `___x
     Do.elabDoLetOrReassign (.let .none) let_stx {
-      resultName := nm
+      resultName := (<- mkFreshUserName `__x)
       resultType := q(Unit)
       k := do
-        let e <- mkTellTerm id_as_nm body
+        let e <- mkTellTerm (getId id) body
         do_cont.mkBindUnlessPure e
         }
+
   | _ => throwUnsupportedSyntax
 
 set_option backward.do.legacy false
