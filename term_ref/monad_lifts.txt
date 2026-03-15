@@ -1,5 +1,8 @@
 -- recall you can find instances with the batteries #instances command, see commands/find_instances.lean
 
+lift from inner monad to outer monad
+`controlAt`
+
 MacroM to TermElabM
 ```
 #eval show TermElabM Unit from do
