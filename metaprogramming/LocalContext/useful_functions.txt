@@ -1,1 +1,2 @@
 mkFreshUserName
+withLetDecl -- opens a context with the given expr in scope
