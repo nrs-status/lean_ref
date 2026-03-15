@@ -34,3 +34,11 @@ deriving instance TypeName for Nat
 def mylb : LetBinding := .mk (.name `x) .def_ (.atom .none "5") `Nat (.mk 5)
 
 #eval lb_val mylb -- some 5
+
+elab "as_typeterm " x:term : term => do
+  let typeterm_nm_expr <- elabTermEnsuringTypeQ x q(Lean.Name)
+  let typeterm_nm <- Meta.reduceEval (α := Lean.Name) typeterm_nm_expr
+  elabTermEnsuringTypeQ (mkIdent typeterm_nm) q(Type)
+
+#eval Dynamic.get? (as_typeterm mylb.val_typeName) mylb.rhs_val -- some 5
+
