@@ -35,3 +35,6 @@ Lean.Meta.forallTelescope {n : Type → Type u_1} [MonadControlT MetaM n] [Monad
 
 Expr to Syntax
 Lean.PrettyPrinter.delab
+
+Syntax to Expr
+Lean.Elab.Term.elabTerm
