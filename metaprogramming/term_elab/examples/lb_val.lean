@@ -33,4 +33,4 @@ deriving instance TypeName for Nat
 
 def mylb : LetBinding := .mk (.name `x) .def_ (.atom .none "5") `Nat (.mk 5)
 
-#eval lb_val mylb
+#eval lb_val mylb -- some 5
