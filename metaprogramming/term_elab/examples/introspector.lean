@@ -174,26 +174,32 @@ def LetBinding.pp (lb : LetBinding) : TermElabM String := do
 
 def simplemonval : IO Nat := .pure 7
 
+
 set_option backward.do.legacy false
-def myLoggedTest' : MyWriter IO Unit := do'
+def myLoggedTest' : MyWriter TermElabM Unit := do'
   let x : Nat := 7
   let z : Prod' := ⟨111, 7⟩ 
   let .mk a b : Prod' := z
   let xx <- simplemonval
   IO.println a
 
-#print myLoggedTest'
-
-
-
-
-/-
-cases to handle
-| `(letDecl| $decl:letEqnsDecl)
-| `(letDecl| $pattern:term $[: $xType?]? := $rhs)
-| `(letDecl| $decl:letIdDecl)
-| `(doIdDecl| $x:ident $[: $xType?]? ← $rhs)
-| `(doPatDecl| _%$pattern ← $rhs)
-| `(doPatDecl| $pattern:term ← $rhs $[| $otherwise? $(rest?)?]?)
+/--
+info: 111
+#[{ sepKind := LetSepKind.non_arrow, lhsKind := LetLHSKind.non_pat }
+7
+[`x], { sepKind := LetSepKind.non_arrow, lhsKind := LetLHSKind.non_pat }
+⟨111, 7⟩
+[`z], { sepKind := LetSepKind.non_arrow, lhsKind := LetLHSKind.pat }
+z
+[`a, `b], { sepKind := LetSepKind.arrow, lhsKind := LetLHSKind.non_pat }
+simplemonval
+[`xx]]
 -/
+#guard_msgs in
+#eval show TermElabM Unit from do
+  let r <- myLoggedTest'
+  let s <- r.2.mapM LetBinding.pp
+  dbg_trace s
+
+
 
