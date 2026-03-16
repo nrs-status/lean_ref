@@ -15,3 +15,6 @@ Lean.Expr.getNumHeadLambdas
 
 check pi type arity
 Lean.Expr.getForallArity
+
+get lam body
+Lean.Meta.AbstractNestedProofs.getLambdaBody
