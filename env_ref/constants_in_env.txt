@@ -1,0 +1,4 @@
+Lean.getConstInfo
+Lean.getConstVal
+Lean.mkConstWithLevelParams
+Lean.getConstInfoDefn
