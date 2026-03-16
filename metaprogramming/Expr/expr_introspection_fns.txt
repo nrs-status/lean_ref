@@ -1,0 +1,17 @@
+get ctor name
+Lean.Expr.ctorName
+
+infer the type of an Expr
+Lean.Meta.inferType : Expr → MetaM Expr
+
+prettyprint an Expr
+Lean.Meta.ppExpr(e : Expr) : MetaM Format
+
+check defeq
+Lean.Meta.isDefEq (t s : Expr) : MetaM Bool
+
+check number of lambda args
+Lean.Expr.getNumHeadLambdas
+
+check pi type arity
+Lean.Expr.getForallArity
