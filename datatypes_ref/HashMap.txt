@@ -15,6 +15,7 @@ erase
 filter
 filterMap
 insert
+insertMany
 map
 fold
 foldM
