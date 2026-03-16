@@ -1,0 +1,1 @@
+https://leanprover.zulipchat.com/#narrow/channel/239415-metaprogramming-.2F-tactics/topic/.60MVarId.2Eassign.60.20vs.20.60MVarId.2EcheckedAssign.60.20vs.20.60isDefEq.60/near/532945534
