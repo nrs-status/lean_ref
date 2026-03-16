@@ -2,3 +2,11 @@ Lean.getConstInfo
 Lean.getConstVal
 Lean.mkConstWithLevelParams
 Lean.getConstInfoDefn
+
+```
+def myplus : Nat -> Nat -> Nat := fun x y => x + y
+
+run_meta do
+  let x <- getConstInfoDefn `myplus
+  dbg_trace x.value
+```
