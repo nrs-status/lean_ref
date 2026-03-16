@@ -1,20 +1,8 @@
-get ctor name
-Lean.Expr.ctorName
-
 fully reduce an Expr to normal form
 Lean.Meta.reduce (e : Expr) (explicitOnly skipTypes skipProofs : Bool := true) : MetaM Expr
 
 reduce an Expr to weak-head normal form
 Lean.Meta.whnf : Expr → MetaM Expr
-
-infer the type of an Expr
-Lean.Meta.inferType : Expr → MetaM Expr
-
-prettyprint an Expr
-Lean.Meta.ppExpr(e : Expr) : MetaM Format
-
-check defeq
-Lean.Meta.isDefEq (t s : Expr) : MetaM Bool
 
 make an Expr whose constructor is Expr.app, inferring implicit arguments and universe levels
 Lean.Meta.mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr
