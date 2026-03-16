@@ -1,2 +1,5 @@
 fill out match cases code action
 https://github.com/MoritzBeroRoos/batteries/blob/d3455881d4650b82cd6c7716f2dcf7d515d09924/Batteries/CodeAction/Match.lean
+
+manually add structure declaration without command
+https://leanprover.zulipchat.com/#narrow/channel/239415-metaprogramming-.2F-tactics/topic/Creating.20and.20registering.20structures.20without.20.60elabCommand.60/near/564586183
