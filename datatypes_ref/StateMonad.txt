@@ -1,0 +1,4 @@
+MonadState.get
+modify
+MonadState.modifyGet
+getModify
