@@ -1,6 +1,12 @@
 get ctor name
 Lean.Expr.ctorName
 
+get app head
+Lean.Expr.getAppFn
+
+get app args
+Lean.Expr.getAppArgs
+
 infer the type of an Expr
 Lean.Meta.inferType : Expr → MetaM Expr
 
