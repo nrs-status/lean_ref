@@ -6,3 +6,6 @@ Lean.LocalContext.modifyLocalDecl
 
 change local context
 Lean.Meta.withLCtx'
+
+get decl fvarid
+Lean.LocalDecl.fvarId
