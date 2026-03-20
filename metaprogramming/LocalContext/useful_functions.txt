@@ -1,2 +1,8 @@
 mkFreshUserName
 withLetDecl -- opens a context with the given expr in scope
+
+modify local decl using fvarId
+Lean.LocalContext.modifyLocalDecl
+
+change local context
+Lean.Meta.withLCtx'
