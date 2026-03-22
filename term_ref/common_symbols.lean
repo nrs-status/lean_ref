@@ -6,5 +6,5 @@ french quotes identifier quotes
 unaccessible inaccessible hygiene hidden
 ✝ \textdied
 
-⟨ \<
-⟩ \>
+‹ \f<
+› \f>
