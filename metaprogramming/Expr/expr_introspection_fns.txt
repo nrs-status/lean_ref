@@ -27,3 +27,13 @@ Lean.Expr.getForallArity
 
 get lam body
 Lean.Meta.AbstractNestedProofs.getLambdaBody
+
+destruct helpers
+Lean.Expr.eq?
+Lean.Expr.ne?
+Lean.Expr.natAdd?
+Lean.Expr.arrow?
+Lean.Expr.listLit?
+Lean.Expr.arrayLit?
+Lean.Expr.prod?
+Lean.Expr.app1/2/3/4?
