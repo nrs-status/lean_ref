@@ -4,8 +4,12 @@ withLetDecl -- opens a context with the given expr in scope
 modify local decl using fvarId
 Lean.LocalContext.modifyLocalDecl
 
+modify local decls
+Lean.LocalContext.modifyLocalDecls
+
 change local context
 Lean.Meta.withLCtx'
 
 get decl fvarid
 Lean.LocalDecl.fvarId
+
