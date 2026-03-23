@@ -36,4 +36,14 @@ Lean.Expr.arrow?
 Lean.Expr.listLit?
 Lean.Expr.arrayLit?
 Lean.Expr.prod?
-Lean.Expr.app1/2/3/4?
+
+Lean.Expr.getAppArgs
+Lean.Expr.getAppFn
+Lean.Expr.getAppPrefix 
+Lean.Expr.withApp
+
+Lean.Expr.forallName
+Lean.Expr.forallDomain
+Lean.Expr.forallBody
+Lean.Expr.getForallBody
+Lean.Expr.getForallBinderNames
