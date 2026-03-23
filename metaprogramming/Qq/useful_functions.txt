@@ -1,0 +1,1 @@
+Given `h : Q(...)`, you can do `h.ty` to obtain its type as an expr
