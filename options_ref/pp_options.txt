@@ -20,3 +20,6 @@ display hidden universe parameters
 
 pp.notation
 display output using defined notations
+
+pp.all
+display errthing
