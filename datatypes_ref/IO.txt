@@ -1,2 +1,17 @@
-make new IO.Ref
+make new IO.Ref or ST.Ref
 IO.mkRef {α : Type} (a : α) : BaseIO (IO.Ref α)
+ST.mkRef {σ : Type} {m : Type → Type} [MonadLiftT (ST σ) m] {α : Type}
+  (a : α) : m (ST.Ref σ α)
+ST.Prim.mkRef
+
+
+extract val in pure ctx
+runST {α : Type} (x : (σ : Type) → ST σ α) : α
+
+interact with ref val
+ST.Ref.get
+ST.Ref.set 
+ST.Ref.modify
+ST.Ref.modifyGet
+ST.Ref.swap
+
