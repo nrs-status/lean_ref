@@ -2,6 +2,7 @@ self-described
 ```
 empty
 size
+isPrefixOf
 ```
 push -- add to end
 pop -- remove from end
