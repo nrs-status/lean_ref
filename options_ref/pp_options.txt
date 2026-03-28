@@ -21,5 +21,8 @@ display hidden universe parameters
 pp.notation
 display output using defined notations
 
+pp.fieldNotation
+use field notation
+
 pp.all
 display errthing
