@@ -10,7 +10,7 @@ it generates the following statements in the type theory:
 3. (getTermType `TypeTest.construct) = Type 0 -> TypeTest Bool
 4. (getParamType `TypeTest.construct 0).sort.level < (getTermType `TypeTest).sort.level
 
-this declaration is illegal because point 3 evaluates to 1 < 1 which is false
+this declaration is illegal because point 4 evaluates to 1 < 1 which is false
 --------------------------------------------B
 the declaration
 ```
