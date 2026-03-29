@@ -29,6 +29,8 @@ generates the following infinite collection of statements:
 2.3. (getTermType `TypeTest.construct.{1}) = `{α : Type 1} -> TypeTest.{1} α
 2.4. (getParamType `TypeTest.construct.{1}).sort.level <= (getTermType `TypeTest.{1}).sort.level
 
+and so on
+
 two things to notice:
 - first, the declaration generates infinitely many such statements, one for each universe level
 - second, the statements *.4 are a less-or-equal statement, unliked our first example, because α is now a parameter to the declaration instead of an index
