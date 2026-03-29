@@ -76,3 +76,10 @@ inductive TypeTest.{u, v} : Type u -> Type v
 is illegal because for any given u, v, the occurence of `TypeTest.{u,v}` in the type of `TypeTest.mk.{u,v}` is fixed; the universe params cannot vary.
 
 Therefore, `TypeTest.mk.{u,v}` has type `(α : Type u) -> TypeTest.{u,v} (TypeTest.{u,v} α) -> TypeTest.{u,v} α`, and we see that the term `TypeTest.{u,v} (TypeTest.{u,v} α)` is ill-typed: `TypeTest.{u,v}` takes an argument of type Type u, but `(TypeTest.{u,v} α)` has type Type v
+
+Note however that a declaration such as
+```
+inductive TypeTest : Type 0 -> Type 0
+| mk : TypeTest (TypeTest Bool) -> TypeTest Bool
+```
+will instead fail because of the strict positivity constraint.
