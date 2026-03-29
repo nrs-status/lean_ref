@@ -82,4 +82,4 @@ Note however that a declaration such as
 inductive TypeTest : Type 0 -> Type 0
 | mk : TypeTest (TypeTest Bool) -> TypeTest Bool
 ```
-will instead fail because of the strict positivity constraint.
+will have correct universe levels but will instead fail because of the strict positivity constraint.
