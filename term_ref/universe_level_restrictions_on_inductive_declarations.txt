@@ -1,0 +1,34 @@
+--------------------------------------------A
+consider the following illegal declaration:
+```
+inductive TypeTest : Type 0 -> Type 0
+| construct : Type 0 -> TypeTest Bool
+```
+it generates the following statements in the type theory:
+1. isTerm [`TypeTest, `TypeTest.construct]
+2. (getTermType `TypeTest) = Type 0 -> Type 0
+3. (getTermType `TypeTest.construct) = Type 0 -> TypeTest Bool
+4. (getParamType `TypeTest.construct 0).sort.level < (getTermType `TypeTest).sort.level
+
+this declaration is illegal because point 3 evaluates to 1 < 1 which is false
+--------------------------------------------B
+the declaration
+```
+inductive TypeTest.{u} (α : Type u) : Type 0
+| construct : TypeTest α
+```
+generates the following infinite collection of statements:
+
+1.1. isTerm [`TypeTest.{0}, `TypeTest.construct.{0}]
+1.2. (getTermType `TypeTest.{0}) = Type 0 -> Type 0
+1.3. (get TermType `TypeTest.construct.{0}) = `{α : Type 0} -> TypeTest.{0} α
+1.4. (getParamType `TypeTest.construct.{0}).sort.level <= (getTermType `TypeTest.{0}).sort.level
+
+2.1. isTerm [`TypeTest.{1}, `TypeTest.construct.{1}]
+2.2. (getTermType `TypeTest.{1}) = Type 1 -> Type 0
+2.3. (getTermType `TypeTest.construct.{1}) = `{α : Type 1} -> TypeTest.{1} α
+2.4. (getParamType `TypeTest.construct.{1}).sort.level <= (getTermType `TypeTest.{1}).sort.level
+
+two things to notice:
+- first, the declaration generates infinitely many such statements, one for each universe level
+- second, the statements *.4 are a less-or-equal statement, unliked our first example, because α is now a parameter to the declaration instead of an index
