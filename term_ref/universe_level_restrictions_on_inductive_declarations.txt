@@ -19,18 +19,60 @@ inductive TypeTest.{u} (α : Type u) : Type 0
 ```
 generates the following infinite collection of statements:
 
-1.1. isTerm [`TypeTest.{0}, `TypeTest.construct.{0}]
-1.2. (getTermType `TypeTest.{0}) = Type 0 -> Type 0
-1.3. (getTermType `TypeTest.construct.{0}) = `{α : Type 0} -> TypeTest.{0} α
-1.4. (getParamType `TypeTest.construct.{0}).sort.level <= (getTermType `TypeTest.{0}).sort.level
+0.1. isTerm [`TypeTest.{0}, `TypeTest.construct.{0}]
+0.2. (getTermType `TypeTest.{0}) = Type 0 -> Type 0
+0.3. (getTermType `TypeTest.construct.{0}) = `{α : Type 0} -> TypeTest.{0} α
+0.4. (getParamType `TypeTest.construct.{0}).sort.level <= (getTermType `TypeTest.{0}).sort.level
 
-2.1. isTerm [`TypeTest.{1}, `TypeTest.construct.{1}]
-2.2. (getTermType `TypeTest.{1}) = Type 1 -> Type 0
-2.3. (getTermType `TypeTest.construct.{1}) = `{α : Type 1} -> TypeTest.{1} α
-2.4. (getParamType `TypeTest.construct.{1}).sort.level <= (getTermType `TypeTest.{1}).sort.level
+1.1. isTerm [`TypeTest.{1}, `TypeTest.construct.{1}]
+1.2. (getTermType `TypeTest.{1}) = Type 1 -> Type 0
+1.3. (getTermType `TypeTest.construct.{1}) = `{α : Type 1} -> TypeTest.{1} α
+1.4. (getParamType `TypeTest.construct.{1}).sort.level <= (getTermType `TypeTest.{1}).sort.level
 
 and so on
 
 two things to notice:
 - first, the declaration generates infinitely many such statements, one for each universe level
 - second, the statements *.4 are a less-or-equal statement, unliked our first example, because α is now a parameter to the declaration instead of an index
+--------------------------------------------C
+the illegal declaration
+```
+inductive TypeTest.{u, v} : Type u -> Type v
+| mk : Nat -> TypeTest Bool
+```
+generates the infinite collection of statements:
+
+0.0.1. isTerm [`TypeTest.{0,0}, `TypeTest.mk.{0,0}]
+0.0.2. (getTermType `TypeTest.{0,0}) = Type 0 -> Type 0
+0.0.3. (getTermType `TypeTest.mk.{0,0}) = Nat -> TypeTest.{0,0} Bool
+
+so far so good. but:
+
+1.0.1. isTerm [`TypeTest.{1,0}, `TypeTest.mk.{1,0}]
+1.0.2. (getTermType `TypeTest.{1,0}) = Type 1 -> Type 0
+1.0.3. (getTermType `TypeTest.mk.{1,0}) = Nat -> TypeTest.{1,0} Bool
+
+point 1.0.2 states that term TypeTest.{1,0}'s first parameter must have sort Type 1, yet Bool has sort Type 0 and it is passed to TypeTest.{1,0} at point 1.0.3; this is why this declaration is illegal
+--------------------------------------------D
+at first sight, the declaration
+```
+inductive TypeTest : Type u -> Type v
+| mk : (α : Type u) -> Option (TypeTest α) -> TypeTest α
+```
+should be illegal: the term `TypeTest.mk.{0,0}` has type `(α : Type 0) -> Option (TypeTest α) -> TypeTest α` of sort Type 1, while the term `TypeTest.{0, 0}` has type `Type -> Type` of sort Type 1, which should be greater. This is because Lean has automatically lifted the index into a parameter, and produced instead the declaration
+```
+inductive TypeTest (α : Type u) : Type v
+| mk : Option (TypeTest α) -> TypeTest α
+```
+so that the restriction on parameter 0 of `TypeTest.mk.{0,0}` has been relaxed.
+
+By setting `set_option inductive.autoPromoteIndices false`, the first declaration is rejected.
+--------------------------------------------E
+the declaration
+```
+inductive TypeTest.{u, v} : Type u -> Type v
+| mk : (α : Type u) -> TypeTest (TypeTest α) -> TypeTest α
+```
+is illegal because for any given u, v, the occurence of `TypeTest.{u,v}` in the type of `TypeTest.mk.{u,v}` is fixed; the universe params cannot vary.
+
+Therefore, `TypeTest.mk.{u,v}` has type `(α : Type u) -> TypeTest.{u,v} (TypeTest.{u,v} α) -> TypeTest.{u,v} α`, and we see that the term `TypeTest.{u,v} (TypeTest.{u,v} α)` is ill-typed: `TypeTest.{u,v}` takes an argument of type Type u, but `(TypeTest.{u,v} α)` has type Type v
