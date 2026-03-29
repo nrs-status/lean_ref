@@ -21,7 +21,7 @@ generates the following infinite collection of statements:
 
 1.1. isTerm [`TypeTest.{0}, `TypeTest.construct.{0}]
 1.2. (getTermType `TypeTest.{0}) = Type 0 -> Type 0
-1.3. (get TermType `TypeTest.construct.{0}) = `{α : Type 0} -> TypeTest.{0} α
+1.3. (getTermType `TypeTest.construct.{0}) = `{α : Type 0} -> TypeTest.{0} α
 1.4. (getParamType `TypeTest.construct.{0}).sort.level <= (getTermType `TypeTest.{0}).sort.level
 
 2.1. isTerm [`TypeTest.{1}, `TypeTest.construct.{1}]
