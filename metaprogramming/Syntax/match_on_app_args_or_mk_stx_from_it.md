@@ -40,3 +40,17 @@ macro_rules
   let x <- evalTerm Nat (<- elabTerm (<- `(Nat)) .none) term_for_elab
   dbg_trace x
 ```
+```
+macro_rules
+| `(($e, $es,*)) => do
+  match es.getElems.toList with
+  | .cons head .nil => `(Nat.add $e $head)
+  | .cons head tail => do
+    let tuple <- `(($head, $(.mk tail.toArray),*)) -- Lean.Parser.Term.tuple requires stx of the form (_, _)
+    `(Nat.add $e $tuple)
+  | .nil => Macro.throwUnsupported
+
+/-- info: 16 -/
+#guard_msgs in
+#eval (1, 5, 10)
+```
