@@ -17,3 +17,15 @@ macro_rules
       `($f $a)
 ```
 from `src/Init/Notation.lean`
+
+another example (my own):
+```
+macro_rules
+| `(Nat.add $_args*) => do
+  let myarray : Lean.TSyntaxArray `term := .mk #[<- `(5), <- `(10)]
+  `(Nat.mul $myarray*)
+
+/-- info: 50 -/
+#guard_msgs in
+#eval Nat.add 0 0
+```
