@@ -38,6 +38,6 @@ example:
 ```
 (let ([x 5]) x)
 ``` 
-    includes two identifiers: `let` and `x` (which appears twice). When this source is parsed in a context where `let` has its usual meaning, the first `x` binds the second `x`.
+includes two identifiers: `let` and `x` (which appears twice). When this source is parsed in a context where `let` has its usual meaning, the first `x` binds the second `x`.
 
 9. A form is a fragment of a program, such as an identifier or a function call. A form is represented as a syntax object, and each syntax object has an associated set of scopes (i.e., a scope set). In the above example, the representations of the xs include the scope that corresponds to the let form.
