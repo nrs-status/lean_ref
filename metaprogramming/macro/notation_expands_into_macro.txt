@@ -1,0 +1,3 @@
+notation Γ "`" e ":" τ => Typing Γ e τ
+expands to the macro declaration
+macro Γ:term "`" e:term ":" τ:term : term => `(Typing $Γ $e $τ)
