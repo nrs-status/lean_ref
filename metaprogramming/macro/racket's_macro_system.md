@@ -113,6 +113,6 @@ which produces the ambiguous
 producing
 ```
 (lambda (x{a_ls, b_intro, c_lam})
-  (let ([x{a_ls, e_bdy, c_lam, d_let} 'other])
+  (let ([x{a_ls, e_bdy, c_lam, d_let} 'other]) -- no longer a subset due to e_bdy
     x{a_ls, b_intro, c_lam, d_let}))
 ```
