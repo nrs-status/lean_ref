@@ -77,4 +77,10 @@ Unlike syntax-rules, the syntax-case form does not produce a procedure. Instead,
 19. A macro definition and its usage must be distinguished by at least one scope; otherwise the result will have ambiguous identifiers. Two approaches for this:
   - Add an additional scope to a macro definition body.
   - Add a scope for each individual macro-use site.
-
+20. Example of an ambiguous identifier (the curly brackets denote scope sets): 
+```
+(lambda (x{a, b, c})
+  (let ([x{a, c, d} 'other])
+    x{a, b, c, d}))
+```
+The scope set `{a, b, c, d}` is a superset of both `{a, b, c}` and `{a, c, d}`, neither of which contain each other.
