@@ -117,3 +117,4 @@ producing
     x{a_ls, b_intro, c_lam, d_let}))
 ```
 21. The result of a `quote-syntax` or `syntax` form is a syntax object. When a syntax object’s S-expression component is just a symbol, then the syntax object is an identifier.
+22. `(syntax form)` quotes the S-expression form while preserving its scope-set information, so that form can be used to construct the result of a macro.
