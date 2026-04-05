@@ -42,6 +42,8 @@ Lean.Expr.getAppFn
 Lean.Expr.getAppPrefix 
 Lean.Expr.withApp
 
+Lean.Expr.isForall
+
 Lean.Expr.forallName
 Lean.Expr.forallDomain
 Lean.Expr.forallBody
