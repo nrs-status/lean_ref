@@ -74,6 +74,7 @@ Unlike syntax-rules, the syntax-case form does not produce a procedure. Instead,
 - adds the scope to every identifier in binding position, as well as to the region where the bindings apply; and
 - extends a global table that maps a ⟨symbol, scope set⟩ pair to a representation of a binding.
 18. To support macros that expand to definitions of given identifiers, a definition context must keep track of scopes created for macro uses, and it must remove those scopes from identifiers that end up in binding positions (effectively moving them back to the definition scope).
-19. A macro definition and its usage must be distinguished by at least one scope; otherwise the result will have ambiguous identifiers.
-
+19. A macro definition and its usage must be distinguished by at least one scope; otherwise the result will have ambiguous identifiers. Two approaches for this:
+  - Add an additional scope to a macro definition body.
+  - Add a scope for each individual macro-use site.
 
