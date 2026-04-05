@@ -84,3 +84,35 @@ Unlike syntax-rules, the syntax-case form does not produce a procedure. Instead,
     x{a, b, c, d}))
 ```
 The scope set `{a, b, c, d}` is a superset of both `{a, b, c}` and `{a, c, d}`, neither of which contain each other.
+
+20. Example of the approach that adds an additional scope to the macro definition body:
+- Without additional scope: (the `intro` subscript denotes a scope added by expansion, the other subscripts denote scopes added by the corresponding binding forms)
+```
+(letrec-syntax ([identity (syntax-rules ()
+                            [(_ misc-id)
+                             (lambda (x{a_ls})
+                               (let ([misc-id 'other])
+                                 x{a_ls}))])])
+   (identity x{a_ls}))
+```
+which produces the ambiguous
+```
+(lambda (x{a_ls, b_intro, c_lam})
+  (let ([x{a_ls, c_lam, d_let} 'other])
+    x{a_ls, b_intro, c_lam, d_let}))
+```
+- With additional scope:
+```
+(letrec-syntax ([identity (syntax-rules ()
+                            [(_ misc-id)
+                             (lambda (x{a_ls})
+                               (let ([misc-id 'other])
+                                 x{a_ls}))])])
+   (identity x{a_ls, e_bdy}))
+```
+producing
+```
+(lambda (x{a_ls, b_intro, c_lam})
+  (let ([x{a_ls, e_bdy, c_lam, d_let} 'other])
+    x{a_ls, b_intro, c_lam, d_let}))
+```
