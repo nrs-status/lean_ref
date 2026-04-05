@@ -66,3 +66,4 @@ Unlike syntax-rules, the syntax-case form does not produce a procedure. Instead,
     [(op n1 n2) #'(- n1 n2)]))
 '(- 1 2)
 ```
+14. Expanding a use of a macro creates a new scope in the same way that a binding form creates a new scope.
