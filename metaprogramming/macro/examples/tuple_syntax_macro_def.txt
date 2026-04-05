@@ -1,0 +1,4 @@
+macro_rules
+| `(()) => `(Unit.unit)
+| `(($e)) => e
+| `(($e, $es,*)) => `(Prod.mk $e ($es,*))
