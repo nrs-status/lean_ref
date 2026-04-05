@@ -18,7 +18,7 @@ macro_rules
 ```
 from `src/Init/Notation.lean`
 
-another example (my own):
+some more examples i made:
 ```
 macro_rules
 | `(Nat.add $_args*) => do
@@ -28,4 +28,15 @@ macro_rules
 /-- info: 50 -/
 #guard_msgs in
 #eval Nat.add 0 0
+```
+```
+/-- info: 6 -/
+#guard_msgs in
+#eval show TermElabM Unit from do
+  let stx <- `(x)
+  let stx' <- `(y)
+  let fnstx <- `(fun $[$(#[stx, stx'])]* => $stx + $stx')
+  let term_for_elab <- `($fnstx 5 1)
+  let x <- evalTerm Nat (<- elabTerm (<- `(Nat)) .none) term_for_elab
+  dbg_trace x
 ```
