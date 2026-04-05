@@ -37,6 +37,7 @@ example:
 8. Some identifiers correspond to variables, some refer to syntactic forms (such as `lambda`, which is the syntactic form for functions), some refer to transformers for macro expansion, and some are quoted to produce symbols or syntax objects. An identifier binds another (i.e., it is a binding) when the former is parsed as a variable or syntactic form and the latter is parsed as a reference to the former; the latter is bound. For example, as a fragment of source, the text
 ```
 (let ([x 5]) x)
-```
-includes two identifiers: `let` and `x` (which appears twice). When this source is parsed in a context where `let` has its usual meaning, the first `x` binds the second `x`.
+``` 
+    includes two identifiers: `let` and `x` (which appears twice). When this source is parsed in a context where `let` has its usual meaning, the first `x` binds the second `x`.
+
 9. A form is a fragment of a program, such as an identifier or a function call. A form is represented as a syntax object, and each syntax object has an associated set of scopes (i.e., a scope set). In the above example, the representations of the xs include the scope that corresponds to the let form.
