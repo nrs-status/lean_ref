@@ -34,4 +34,4 @@ example:
 - `quasiquote`: `
 - `unquote`: ,
 - `unquote-splicing`: ,@
-
+8. Some identifiers correspond to variables, some refer to syntactic forms (such as `lambda`, which is the syntactic form for functions), some refer to transformers for macro expansion, and some are quoted to produce symbols or syntax objects. An identifier binds another (i.e., it is a binding) when the former is parsed as a variable or syntactic form and the latter is parsed as a reference to the former; the latter is bound.
