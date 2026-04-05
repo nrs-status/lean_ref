@@ -69,5 +69,11 @@ Unlike syntax-rules, the syntax-case form does not produce a procedure. Instead,
 14. Expanding a use of a macro creates a new scope in the same way that a binding form creates a new scope.
 15. Lexical scoping corresponds to sets that are constrained to a particular shape: For any given set, there’s a single scope s that implies all the others (i.e., the ones around s in the program). As a result, s by itself is enough information to identify a binding for a given reference. We normally describe lexical scope in terms of the closest such s for some notion of “closest.” Given scope sets instead of individual scopes, we can define “closest” as the largest relevant set.
 16. More generally, we can define binding based on subsets: A reference’s binding is found as one whose set of scopes is the largest subset of the reference’s own scopes (in addition to having the same symbolic name). The advantage of using sets of scopes is that macro expansion creates scope sets that overlap in more general ways; there’s not always a s that implies all the others. Absent a determining s, we can’t identify a binding by a single scope, but we can identify it by a set of scopes.
+17. When macro expansion encounters a primitive binding form, it
+- creates a new scope;
+- adds the scope to every identifier in binding position, as well as to the region where the bindings apply; and
+- extends a global table that maps a ⟨symbol, scope set⟩ pair to a representation of a binding.
+
+
 
 
