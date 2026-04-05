@@ -30,4 +30,8 @@ example:
 > (quasiquote (1 2 (unquote-splicing (list (+ 1 2) (- 5 1))) 5))
 '(1 2 3 4 5)
 ```
+7. Shorthands:
+- `quasiquote`: `
+- `unquote`: ,
+- `unquote-splicing`: ,@
 
