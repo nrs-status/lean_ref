@@ -116,3 +116,4 @@ producing
   (let ([x{a_ls, e_bdy, c_lam, d_let} 'other]) -- no longer a subset due to e_bdy
     x{a_ls, b_intro, c_lam, d_let}))
 ```
+21. The result of a `quote-syntax` or `syntax` form is a syntax object. When a syntax object’s S-expression component is just a symbol, then the syntax object is an identifier.
