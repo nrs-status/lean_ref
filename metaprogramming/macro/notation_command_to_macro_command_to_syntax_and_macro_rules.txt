@@ -1,7 +1,13 @@
+```
 notation Γ "`" e ":" τ => Typing Γ e τ
+```
 expands to the macro declaration
+```
 macro Γ:term "`" e:term ":" τ:term : term => `(Typing $Γ $e $τ)
+```
 which expands to
+```
 syntax term "`" term ":" term : term
 macro_rules
 | `($Γ ` $e : $τ) => `(Typing $Γ $e $τ)
+```
