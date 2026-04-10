@@ -6,3 +6,7 @@ set_option inductive.autoPromoteIndices false
 
 disable legacy do
 set_option backward.do.legacy false
+
+disable synth order checking
+set_option synthInstance.checkSynthOrder false
+
