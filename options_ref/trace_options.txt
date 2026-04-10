@@ -16,3 +16,6 @@ trace.Debug.Meta.Tactic.simp
 trace.Elab.step.result
 trace.Elab.postpone
 
+--traces for typeclasses
+trace.Meta.synthInstance
+
