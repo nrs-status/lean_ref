@@ -2,14 +2,7 @@ Std/Data/DHashMap/Internal/Defs.lean
 -  only `Internal.Index`, `Internal.Defs` and `Internal.AssocList.Basic` contain
 any executable code. The rest of the files set up the verification framework which is described in
 the remainder of this text.
-- The basic idea is to translate statements about hash maps into statements about lists using the
-function `toListModel` defined in this file. The function `toListModel` simply concatenates all
-buckets into a `List ((a : α) × β a)`. The file `Internal.List.Associative` then contains a complete
-verification of associative lists. The theorems relating the operations on `Raw₀` to the operations
-on `List ((a : α) × β a)` are located in `Internal.WF` and have such names as
-`contains_eq_containsKey` or `toListModel_insert`. In the file `Internal.RawLemmas` we then state
-all of the lemmas for `Raw₀` and use a tactic to apply the results from `Internal.WF` to reduce to
-the results from `Internal.List.Associative`. From there we can state the actual lemmas for
-`DHashMap.Raw`, `DHashMap`, `HashMap.Raw`, `HashMap`, `HashSet.Raw` and `HashSet` in the
-non-internal `*.Lemmas` files and immediately reduce them to the results about `Raw₀` in
-`Internal.RawLemmas`.
+- The basic idea is to translate statements about hash maps into statements about lists using the function `toListModel` defined in this file. The function `toListModel` simply concatenates all buckets into a `List ((a : α) × β a)`. The file `Internal.List.Associative` then contains a complete verification of associative lists. The theorems relating the operations on `Raw₀` to the operations on `List ((a : α) × β a)` are located in `Internal.WF` and have such names as `contains_eq_containsKey` or `toListModel_insert`. In the file `Internal.RawLemmas` we then state all of the lemmas for `Raw₀` and use a tactic to apply the results from `Internal.WF` to reduce to the results from `Internal.List.Associative`. From there we can state the actual lemmas for `DHashMap.Raw`, `DHashMap`, `HashMap.Raw`, `HashMap`, `HashSet.Raw` and `HashSet` in the non-internal `*.Lemmas` files and immediately reduce them to the results about `Raw₀` in `Internal.RawLemmas`.
+- There are some additional indirections to this high-level strategy. First, we have an additional layer of so-called "model functions" on `Raw₀`, defined in the file `Internal.Model`. These have the same signature as their counterparts defined in this file, but may have a slightly simpler implementation.
+- We prove that the functions are equal to their model implementations in `Internal.Model`, then verify the model implementation.
+-  Second, reducing hash maps to lists only works if the hash map is well-formed. Our internal well-formedness predicate is called `Raw.WFImp` (defined in this file) and states that (a) each bucket only contains items with the correct hash, (b) the cached size is equal to the actual number of elements in the buckets, and (c) after concatenating the buckets the keys in the resulting list are pairwise not equal. The third condition is a priori stronger than the slightly more natural condition that the keys in each bucket are pairwise not equal, but they are equivalent in well-behaved cases and our condition works better. The user-visible well-formedness predicate `Raw.WF` is equivalent to `WFImp`, as is shown in `Internal.WF`. The user-visible version exists to postpone the proofs that all operations preserve well-formedness to a later file so that it is possible to import `DHashMap.Basic` without pulling in all of the proof machinery.
