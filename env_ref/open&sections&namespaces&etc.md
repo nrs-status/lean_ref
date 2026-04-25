@@ -8,3 +8,12 @@ end NS
 open scoped NS
 def x := {!{ "pear" }!}
 ```
+- to close `open` commands, enclose it into a `section`
+```
+section
+
+open blah
+
+...
+end
+```
