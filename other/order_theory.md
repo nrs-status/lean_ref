@@ -38,4 +38,10 @@ Gunter
 This is the kind of universal domain used in practice.
 
 Abramsky
+
 31. p15: A pointed poset P is a dcpo iff every monotone map on P has a least fixpoint.
+32. p17: <img width="1174" height="390" alt="image" src="https://github.com/user-attachments/assets/c4d525dd-173c-4d04-bfd7-5d83f1db3407" />
+
+33. p22: <img width="1210" height="480" alt="image" src="https://github.com/user-attachments/assets/da931656-5486-4516-802b-01d7dc18c9d1" />
+
+
