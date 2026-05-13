@@ -27,3 +27,9 @@ Gunter
 22. p106: transition rule for application in PCF: (\x : t. M)N -> [x |-> N]M. transition rule for the fixed point operator in PCF : μx : t. M -> [x |-> μx : t. M]M.
 23. p128: fixed point semantics for PCF. [[Nat]] := Nat + Bot. [[Bool]] := Bool. [[s -> t]] := cpo of continuous functions from [[s]] to [[t]]. An H-environment ρ is a partial function that assigns to each variable x in H a value ρ(x) in [[H(x)]]. [[H |> M : t]] := a function that assigns to each H-environment ρ a value in [[t]]. i.e. [[H |> M : t]]ρ is in [[t]]. application: [[H |> M(N) : t]]ρ := ([[H |> M : s -> t]]ρ)([[H |> N : s]]ρ).
 24. p129: [[H |> μx : t. M : t]]ρ = leastFixedPoint(fun d => [[H, x : t |> M : t]]ρ[x |-> d]) 
+Henke
+25. Scott 1976: the universal domain Pw is so rich in subdomains that one can find a corresponding subdomain for all those domains or "data types" computer scientists are normally interested in.
+26. A retract is an idempotent function. The idempotency property implies that all elements in the range of a retract f remain unchanged, i.e. the range of f is exactly its set of fixed points.
+27. The retracts of Pw form a category.
+Gunter
+28. //There is an exposition of the theory of types as retracts starting at page 279.
