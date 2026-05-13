@@ -33,6 +33,6 @@ Henke
 27. The retracts of Pw form a category.
 Gunter
 28. //There is an exposition of the theory of types as retracts starting at page 279.
-Plotkin 1986
+29. Plotkin 1986
 <img width="1322" height="335" alt="image" src="https://github.com/user-attachments/assets/bd82545d-c477-4b6f-9b1f-d37258637a95" />
 This is the kind of universal domain used in practice.
