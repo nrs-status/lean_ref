@@ -1,4 +1,5 @@
 --traces for grind
+trace.grind.split -- traces grind's cases analysis
 
 trace.grind.eqc
 "Setting the option trace.grind.eqc to true causes grind to print a line every time two equivalence classes merge, which is handy for seeing propagation in action."
