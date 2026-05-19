@@ -9,6 +9,8 @@ trace.grind.ematch.instance
 trace.grind.split -- traces grind's cases analysis
 trace.grind.debug.proof -- print the constructed proof term
 trace.grind.debug.ematch.pattern -- has lots of info about patterns
+trace.grind.ematch.pattern -- seems to have useful info
+
 
 --traces for simp
 trace.Meta.Tactic.simp.rewrite
