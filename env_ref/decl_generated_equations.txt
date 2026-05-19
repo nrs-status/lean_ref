@@ -30,3 +30,5 @@ generates:
 ```
 mymatch._sparseCasesOn_1
 ```
+
+you can use `whatsnew_in` which will give a more exhaustive lisst of generated equations if you import Mathlib
