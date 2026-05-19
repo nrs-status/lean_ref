@@ -11,6 +11,7 @@ trace.grind.debug.proof -- print the constructed proof term
 trace.grind.debug.ematch.pattern -- has lots of info about patterns
 trace.grind.ematch.pattern -- seems to have useful info
 trace.grind.internalize -- seems to track when stuff is added to an equivalence class
+trace.grind.assert -- track when a new fact is asserted
 
 
 --traces for simp
