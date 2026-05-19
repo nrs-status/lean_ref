@@ -7,6 +7,7 @@ trace.grind.ematch.instance
 "Enabling the option trace.grind.ematch.instance causes grind print a trace message for each theorem instance it generates, which can be helpful when determining E-matching patterns."
 
 trace.grind.split -- traces grind's cases analysis
+trace.grind.debug.proof -- print the constructed proof term
 
 --traces for simp
 trace.Meta.Tactic.simp.rewrite
