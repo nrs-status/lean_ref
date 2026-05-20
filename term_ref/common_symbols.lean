@@ -15,3 +15,6 @@ CategoryStruct.comp
 
 CategoryStruct.id
 𝟙 \b1
+
+HEq
+≍ \asymp
