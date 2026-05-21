@@ -1,0 +1,5 @@
+List.diff -- list difference
+List.inter -- intersection
+List.bagInter -- also intersection
+List.Disjoint -- proposition that two lists are disjoint
+List.eraseDups -- erase duplicates
