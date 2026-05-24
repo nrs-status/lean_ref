@@ -1,3 +1,6 @@
+YOU CAN USE 
+:LeanAbbreviationsReverseLookup
+TO PRINT IN NVIM THE ABBREVIATION FOR THE UNICODE UNDER THE CURSOR
 
 french quotes identifier quotes
 « \f<<
