@@ -17,3 +17,4 @@ open blah
 ...
 end
 ```
+- you can use `#where` to print information about the current scope, i.e., information about the `namespace`, `open`, `variable`, `universe`, and `set_option` commands
