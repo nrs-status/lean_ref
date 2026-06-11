@@ -23,6 +23,7 @@ trace.Debug.Meta.Tactic.simp
 --traces for elaboration
 trace.Elab.step.result
 trace.Elab.postpone
+trace.Elab.definition.wf -- display the preprocessing of a function expression for inferring wellfounded recursion
 
 --traces for typeclasses
 trace.Meta.synthInstance
