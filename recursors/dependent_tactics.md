@@ -23,3 +23,43 @@ example (n : Nat) (p : Nat -> Prop) (q : ∀n, p n -> Prop) (h : p n) (k : Nat) 
   skip
 ```
 before the rewrite, the goal is `|- q n (h : p n)`, and the rewrite duplicates the `h` hypothesis, such that the original hypothesis is renamed and its occurence in the goal is renamed accordingly. This is because a rewrite is a cast according to an equality, and therefore the type of the result of the rewrite is `eq ▸ p n`, which is not the same proposition as the one occuring in the goal.
+- A hypothesis given to the `generalizing` clause in the `induction` tactic will make it such that it appears as a hypothesis in the induction hypothesis. `induction x generalizing y` is the same as `revert y; induction x; intro y`. Example:
+```
+
+example (n : Nat) (p : Prop) (h : p) (mot : Nat -> Prop) : mot n := by
+  induction n
+/-
+case zero
+p : Prop
+h : p
+mot : Nat → Prop
+⊢ mot 0
+
+case succ
+p : Prop
+h : p
+mot : Nat → Prop
+n✝ : Nat
+a✝ : mot n✝
+⊢ mot (n✝ + 1)
+-/
+
+example (n : Nat) (p : Prop) (h : p) (mot : Nat -> Prop) : mot n := by
+  induction n generalizing h
+
+/-
+case zero
+p : Prop
+mot : Nat → Prop
+h : p
+⊢ mot 0
+
+case succ
+p : Prop
+mot : Nat → Prop
+n✝ : Nat
+a✝ : p → mot n✝
+h : p
+⊢ mot (n✝ + 1)
+-/
+```
